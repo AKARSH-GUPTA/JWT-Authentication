@@ -1,0 +1,6 @@
+{
+  "name": "SecureDash Sandbox",
+  "description": "High-fidelity interactive visual sandbox for SecureDash account creation and workspace administration dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
