@@ -1,8 +1,9 @@
 import axios from "axios";
-
+import dotenv from "dotenv";
+dotenv.config();
 async function Login(email, password) {
   try {
-    const response = await axios.post("http://localhost:4000/login", {
+    const response = await axios.post(`${process.env.BACKEND_URL}/login`, {
       email,
       password,
     });
@@ -13,7 +14,7 @@ async function Login(email, password) {
 }
 async function Register(name, email, password) {
   try {
-    const response = await axios.post("http://localhost:4000/register", {
+    const response = await axios.post(`${process.env.BACKEND_URL}/register`, {
       name,
       email,
       password,
@@ -26,11 +27,14 @@ async function Register(name, email, password) {
 
 async function getProfile(token) {
   try {
-    const response = await axios.get("http://localhost:4000/profilefetcher", {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get(
+      `${process.env.BACKEND_URL}/profilefetcher`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     return response.data;
   } catch (error) {
     return error;
@@ -39,7 +43,7 @@ async function getProfile(token) {
 
 async function getRefreshToken(acesstoken) {
   try {
-    const response = await axios.get("http://localhost:4000/getToken", {
+    const response = await axios.get(`${process.env.BACKEND_URL}/getToken`, {
       headers: {
         Authorization: `Bearer ${acesstoken}`,
       },
