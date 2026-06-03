@@ -63,7 +63,14 @@ export function RegistrationForm({ onAuthenticationSuccess, onToggleScreen }) {
           formData.email,
           formData.password,
         );
-        if (data.registered) {
+        if (data instanceof Error) {
+          setLoading(false);
+          onAuthenticationSuccess({
+            timestamp: new Date().toISOString(),
+            message: data.message,
+            type: "error",
+          });
+        } else if (data.registered) {
           setLoading(false);
           onAuthenticationSuccess({
             name: data.name,

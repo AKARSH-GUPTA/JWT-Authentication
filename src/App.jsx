@@ -16,6 +16,13 @@ export default function App() {
       try {
         async function Fetcher() {
           const response = await getProfile(localStorage.getItem("token"));
+          if (response instanceof Error) {
+            triggerToast(response.message, "error");
+            setCurrentUser(null);
+            setAuthScreen("login");
+            setReady(true);
+            return;
+          }
           const data = {
             name: response.name,
             email: response.email,
