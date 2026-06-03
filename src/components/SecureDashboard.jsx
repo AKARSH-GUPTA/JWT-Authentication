@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { getProfile } from "../components/authentication";
 import {
   Shield,
   Key,
   Terminal,
-  Activity,
   Settings,
   LogOut,
   Plus,
   Trash2,
   Copy,
-  Check,
   Search,
-  Sliders,
-  Lock,
-  Wifi,
   Users,
 } from "lucide-react";
 

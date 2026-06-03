@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading-container {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #eef6ff 50%,
+    #dbeafe 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* Floating background particles */
+.loading-container::before,
+.loading-container::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+.loading-container::before {
+  background: #2563eb;
+  top: -100px;
+  left: -100px;
+}
+
+.loading-container::after {
+  background: #60a5fa;
+  bottom: -100px;
+  right: -100px;
+}
+
+.loader-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #2563eb transparent transparent transparent;
+}
+
+.orbit-1 {
+  width: 220px;
+  height: 220px;
+  border-width: 5px;
+  animation: spin 2s linear infinite;
+}
+
+.orbit-2 {
+  width: 170px;
+  height: 170px;
+  border-width: 5px;
+  border-color: #60a5fa transparent transparent transparent;
+  animation: spinReverse 1.5s linear infinite;
+}
+
+.orbit-3 {
+  width: 120px;
+  height: 120px;
+  border-width: 5px;
+  border-color: #93c5fd transparent transparent transparent;
+  animation: spin 1s linear infinite;
+}
+
+.center-circle {
+  width: 85px;
+  height: 85px;
+  background: white;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow:
+    0 0 30px rgba(37, 99, 235, 0.3),
+    0 0 60px rgba(96, 165, 250, 0.2);
+
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.center-circle span {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.loading-text {
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e40af;
+  animation: fade 1.5s ease-in-out infinite;
+}
+
+/* Animations */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
